@@ -1,0 +1,13 @@
+<div class="contents">
+    <%= form_for(@posting, html: {method: "patch"}) do |f| %>
+    <h3>
+      編集する
+    </h3>
+    <div class="form">
+      <%= f.text_area :text, size: "30x10", placeholder: "text" %>
+    </div>
+    <div class="btn">
+      <%= f.submit %>
+    </div>
+    <% end %>
+</div>
