@@ -3,5 +3,7 @@
   <% @postings.each do |posting| %>
     <%= render partial: "postings/posting", locals: { posting: posting } %>
   <% end %>
-  <%= paginate(@postings) %>
 </dev>
+<div class="page">
+<%= paginate(@postings) %>
+</div>

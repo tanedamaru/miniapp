@@ -1,36 +1,47 @@
 <div class="contents">
-  <div class="content_post">
+  <div class="card-panel post">
+    <span class="name">
+      <a href="/users/<%= @posting.user.id %>">
+        <%= @posting.user.nickname %>
+      </a>
+    </span>
+
+    <div class="text-box">
+    <%= simple_format(@posting.text) %>
+    </div>
+
+    <div class="divider"></div>
+
     <% if user_signed_in? && current_user.id == @posting.user_id %>
-      <div class="more">
-        <ul class="more_list">
-          <li>
-            <%= link_to '編集', "/postings/#{@posting.id}/edit", method: :get %>
-          </li>
-          <li>
-            <%= link_to '削除', "/postings/#{@posting.id}", method: :delete %>
-          </li>
+      <div class='right-content'>
+        <ul class="list-list">
+          <i class="small material-icons">
+          <%= link_to 'edit', "/postings/#{@posting.id}/edit", method: :get, :title => "edit" %>
+          </i>
+        </li>
+        <li class="list-list">
+          <i class="small material-icons">
+          <%= link_to 'delete', "/postings/#{@posting.id}", method: :delete, :title => "delete" %>
+          </i>
+        </li>
         </ul>
       </div>
     <% end %>
-    <%= simple_format(@posting.text) %>
-    <span class="name">
-      <a href="/users/<%= @posting.user.id %>">
-        <span>投稿者</span><%= @posting.user.nickname %>
-      </a>
-    </span>
   </div>
   <div class="container">
     <% if current_user %>
-      <%= form_tag("/postings/#{@posting.id}/comments", method: :post) do %>
-        <textarea cols="30" name="text" placeholder="コメントする" rows="2"></textarea>
-        <input type="submit" value="SENT">
+      <%= form_for [@posting, @comment], {method: "post"} do |f| %>
+        <%= f.text_area :text, size: "30x2", placeholder: "コメントする" %>
+        <div class="waves-effect waves-light btn-large">
+        <%= f.submit %>
+        </div>
       <% end %>
     <% end %>
     <div class="comments">
       <h4>＜コメント一覧＞</h4>
       <% if @comments %>
         <% @comments.each do |comment| %>
-          <p>
+          <p class="card-panel">
             <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>:</strong>
             <%= comment.text %>
           </p>

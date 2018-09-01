@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root  'postings#index'                        #ルートパスの指定
   post  'postings/new' => 'postings#create'
   resources :postings do
-    resources :comments, only: [:create]
+    resources :comments, only: [:new, :create]
   end
   resources :users, only: [:show]
 end

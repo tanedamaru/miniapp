@@ -19,49 +19,69 @@
         s.parentNode.insertBefore(wf, s);
       })();
     </script>
-          <!--Import Google Icon Font-->
+      <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-</head>
-<body>
-        <!--Import jQuery before materialize.js-->
+      <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+</head>
+<body>
+
     <header class="header">
-      <div class="header__bar">
-        <h1 class="grid-6"><a href="/postings">Life Log</a></h1>
-        <% if user_signed_in? %>
-          <div class="user_nav">
-            <span><%= current_user.nickname %>
-              <ul class="user_info">
-                <li>
+      <nav>
+      <div class="nav-wrapper light-blue lighten-3">
+        <a href="/" class="brand-logo head-title">Life Log</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <% if user_signed_in? %>
+            <div class="user_nav">
+              <li>
+                <%= current_user.nickname %>
+              </li>
+              <li>
                 <a href="/users/<%= current_user.id %>">My Page</a>
+              </li>
+              <li>
                 <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-                </li>
-              </ul>
-            </span>
-            <a class="post" href="/postings/new"><h3>投稿する</h3></a>
-          </div>
-        <% else %>
-          <div class="user_nav">
-            <%= link_to "Sign In", new_user_session_path, :class => 'post' %>
-            <%= link_to "Sign Up", new_user_registration_path, :class => 'post' %>
-          </div>
-        <% end %>
+              </li>
+            </div>
+          <% else %>
+            <div class="user_nav">
+              <li>
+                <%= link_to "Sign In", new_user_session_path, :class => 'post' %>
+              </li>
+              <li>
+                <%= link_to "Sign Up", new_user_registration_path, :class => 'post' %>
+              </li>
+            </div>
+          <% end %>
+        </ul>
       </div>
+      </nav>
     </header>
 
-    <%= yield %>
+    <div class="body-set">
+      <%= yield %>
+    </div>
 
     <footer>
       <p>
-        Copyright: Life Log  [by Riku Taneda, 2018]
+        Life Log  [ Riku Taneda, 2018 ]
       </p>
-    </footer>
 
+      <div class="new-post">
+      <a class="btn-floating btn-large waves-effect waves-light red" href="/postings/new">
+        <i class="material-icons">add</i>
+      </a>
+      </div>
+
+    </footer>
 </body>
 </html>

@@ -7,6 +7,7 @@ class PostingsController < ApplicationController
   end
 
   def new
+    @posting = Posting.new
   end
 
   def create
@@ -30,6 +31,7 @@ class PostingsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
     @posting = Posting.find(params[:id])
     @comments = @posting.comments.includes(:user)
   end

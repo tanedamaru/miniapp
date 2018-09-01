@@ -14,49 +14,99 @@
  *= require_self
  */
 
-html, body {
+html{
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
+body{
+  background-color: #f0f0f0;
+  height: 100%;
+  margin: 0;
+  padding: 60px 0 0 0;
+}
+
 .header{
-  background-color: orange;
-  color: black;
+  top: 0;
   width: 100%;
-  height: 60px;
   position: fixed;
 }
 
-.header__bar{
-  width: 100%;
+.head-title{
+  width: auto;
   height: 100%;
-  position: absolute;
+  left: 150px;
 }
 
-.grid-6{
-  color: white;
-  float: left;
-  left: 50px;
+.body-set{
   margin: 0 auto;
-  padding-left: 60px;
-  padding-top: 5px;
-  position: relative;
+  min-height: 500px;
+  width: 900px;
+  min-width: 300px;
 }
 
-.user_nav{
-  color: white;
-  font-size: 16px;
+.container {
+    position: relative;
+    width: 200px;
+    margin: 50px auto;
+}
+
+.new-post{
   float: right;
-  position: relative;
-  right: 100px;
-  height: 100%;
+  right: 50px;
+  bottom: 90px;
+  position: fixed;
 }
 
+/* temple-posting*/
+
+.post{
+  margin: 0 auto;
+  height: auto;
+/*  float left;*/
+}
+
+.name{
+  width: 100%;
+  height: auto;
+}
+
+.right-content{
+  height: 40px;
+  bottom: 0;
+}
+
+.list-list{
+  float:left;
+}
+
+.list-list:before{
+  left: 30px;
+}
+
+.text-box{
+  padding-top: 10px;
+  border-top: groove;
+  border-color: skyblue;
+  padding: 20px 10px 20px 10px;
+}
+
+.page{
+  width: 100%;
+  text-align: center;
+}
+
+nav{
+  z-index: 1;
+}
+
+/* footer */
 footer{
+  clear: both;
   border-top: groove;
   text-align: center;
-  background-color: skyblue;
   bottom: 0;
   padding: 10px;
+  margin-top: 5px;
 }
